@@ -7,18 +7,30 @@
   <meta name="description" content="RelayNet is a protocol-first platform for cross-organization logistics responsibility handoff.">
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
       line-height: 1.6;
-      max-width: 860px;
+      max-width: 900px;
       margin: 40px auto;
       padding: 0 16px;
       color: #222;
     }
-    h1, h2, h3 {
-      line-height: 1.25;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
     }
-    h1 {
-      margin-bottom: 0.2em;
+    .lang-switch {
+      font-size: 0.9em;
+    }
+    .lang-switch a {
+      margin-left: 10px;
+      cursor: pointer;
+      color: #0057d9;
+      text-decoration: none;
+    }
+    .lang-switch a.active {
+      font-weight: bold;
+      text-decoration: underline;
     }
     hr {
       margin: 2.5em 0;
@@ -35,14 +47,30 @@
       font-size: 0.9em;
       color: #666;
     }
+    .lang {
+      display: none;
+    }
+    .lang.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
 
-<h1>RelayNet</h1>
+<header>
+  <h1>RelayNet</h1>
+  <div class="lang-switch">
+    <a id="btn-en" class="active" onclick="switchLang('en')">EN</a>
+    <a id="btn-zh" onclick="switchLang('zh')">中文</a>
+  </div>
+</header>
+
 <p><strong>A protocol-first platform for cross-organization logistics handoff</strong></p>
 
 <hr>
+
+<!-- ================= EN ================= -->
+<div id="lang-en" class="lang active">
 
 <h2>What is RelayNet?</h2>
 <p>
@@ -58,21 +86,12 @@ explicitly transferred, validated, and audited between multiple parties.
 <hr>
 
 <h2>The core idea</h2>
-<p>
-RelayNet treats <em>responsibility handoff</em> as a first-class concept:
-</p>
-
 <ul>
   <li><strong>Relay Task</strong> – a complete cross-organization responsibility chain</li>
   <li><strong>Relay Stage</strong> – a bounded responsibility interval owned by one party</li>
   <li><strong>State Transition</strong> – formal rules for responsibility transfer</li>
   <li><strong>Auditable Event</strong> – immutable records of responsibility change</li>
 </ul>
-
-<p>
-These abstractions are protocol-level and independent of any specific
-transport mode or business system.
-</p>
 
 <hr>
 
@@ -81,12 +100,7 @@ transport mode or business system.
   <li>Not a TMS / WMS / OMS</li>
   <li>Not a dispatch or capacity marketplace</li>
   <li>Not a SaaS business application</li>
-  <li>Not a replacement for existing logistics systems</li>
 </ul>
-
-<p>
-RelayNet provides a neutral, auditable responsibility layer between systems.
-</p>
 
 <hr>
 
@@ -105,19 +119,69 @@ RelayNet is currently in early-stage protocol design.
 The focus is on getting abstractions and boundaries right before implementation.
 </p>
 
+</div>
+
+<!-- ================= 中文 ================= -->
+<div id="lang-zh" class="lang">
+
+<h2>什么是 RelayNet？</h2>
+<p>
+RelayNet 是一个面向<strong>跨组织物流协作</strong>的
+<strong>协议优先（protocol-first）责任接力平台与规则基础设施</strong>。
+</p>
+
+<p>
+它关注的不是运输本身，
+而是<strong>责任如何在多个参与方之间被清晰、可审计地交接</strong>。
+</p>
+
 <hr>
 
-<h2>References</h2>
+<h2>核心思想</h2>
 <ul>
-  <li>GitHub Organization:
-    <a href="https://github.com/relaynet-org">github.com/relaynet-org</a>
-  </li>
-  <li>Core Repository:
-    <a href="https://github.com/relaynet-org/relaynet-core">relaynet-core</a>
-  </li>
-  <li>Project Constitution:
+  <li><strong>接力任务（Relay Task）</strong>：一个完整的跨组织责任链</li>
+  <li><strong>接力阶段（Relay Stage）</strong>：某一参与方承担责任的时间区间</li>
+  <li><strong>状态转移（State Transition）</strong>：责任合法迁移的规则</li>
+  <li><strong>可审计事件（Auditable Event）</strong>：责任变化的事实记录</li>
+</ul>
+
+<hr>
+
+<h2>RelayNet 不做什么</h2>
+<ul>
+  <li>不做 TMS / WMS / OMS</li>
+  <li>不做调度或运力撮合平台</li>
+  <li>不做 SaaS 业务系统</li>
+</ul>
+
+<hr>
+
+<h2>架构理念</h2>
+<ul>
+  <li><strong>Open Core</strong>：核心规则与协议保持透明、可审计</li>
+  <li><strong>SDK 接入</strong>：采用宽松许可证，降低集成门槛</li>
+  <li><strong>商业扩展</strong>：不污染核心协议的前提下进行</li>
+</ul>
+
+<hr>
+
+<h2>项目状态</h2>
+<p>
+RelayNet 目前处于<strong>早期立项与协议设计阶段</strong>，
+当前重点是把抽象与边界一次性做对，而非快速堆功能。
+</p>
+
+</div>
+
+<hr>
+
+<h2>References / 参考链接</h2>
+<ul>
+  <li><a href="https://github.com/relaynet-org">GitHub Organization</a></li>
+  <li><a href="https://github.com/relaynet-org/relaynet-core">relaynet-core</a></li>
+  <li>
     <a href="https://github.com/relaynet-org/relaynet-core/blob/main/docs/PROJECT_CONSTITUTION.md">
-      PROJECT_CONSTITUTION.md
+      Project Constitution
     </a>
   </li>
 </ul>
@@ -129,6 +193,18 @@ The focus is on getting abstractions and boundaries right before implementation.
     usage rights beyond applicable open-source licenses.
   </p>
 </footer>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('lang-en').classList.remove('active');
+  document.getElementById('lang-zh').classList.remove('active');
+  document.getElementById('btn-en').classList.remove('active');
+  document.getElementById('btn-zh').classList.remove('active');
+
+  document.getElementById('lang-' + lang).classList.add('active');
+  document.getElementById('btn-' + lang).classList.add('active');
+}
+</script>
 
 </body>
 </html>
